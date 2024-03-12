@@ -1,1 +1,89 @@
-网页变更了
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>蘭蘭商店</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+        }
+        
+		.container {
+			column-count: 3;
+		}
+    </style>
+</head>
+<body>
+	<H1 align="center">蘭 蘭 商 店</H1>
+	<H2 align="center">中　国　物　産</H2>
+	<div class="container">
+		<div class="row">
+			<img class="gy-3" alt="" data-src="./images/1.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/2.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/3.jpg"/>
+		</div>
+		<div class="row">
+			<img class="gy-3" alt="" data-src="./images/4.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/5.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/6.jpg"/>
+		</div>
+		<div class="row">
+			<img class="gy-3" alt="" data-src="./images/7.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/8.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/9.jpg"/>
+		</div>
+		<div class="row">
+			<img class="gy-3" alt="" data-src="./images/10.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/11.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/12.jpg"/>
+		</div>
+		<div class="row">
+			<img class="gy-3" alt="" data-src="./images/13.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/14.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/15.jpg"/>
+		</div>
+		<div class="row">
+			<img class="gy-3" alt="" data-src="./images/16.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/17.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/18.jpg"/>
+		</div>
+		<div class="row">
+			<img class="gy-3" alt="" data-src="./images/19.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/20.jpg"/>
+			<img class="gy-3" alt="" data-src="./images/21.jpg"/>
+		</div>
+	</div>
+    <div class="footer">
+		<div class="row">
+			<div class="gy-3" align="center">住所：</div>
+			<div class="gy-3" align="center">微信：</div>
+			<div class="gy-3" align="center">LINE：</div>
+			<div class="gy-3" align="center">郵送、配達について、お気楽問い合わせしてください。</div>
+		</div>
+    </div>
+</body>
+<script>
+    $(function () {
+        // 第一次需要先加载一次
+        lazyLoad();
+
+        $(window).scroll(lazyLoad);
+
+        function isInSight(el) {
+            const bound = el.getBoundingClientRect();
+            const clientHeight = $(window).height(); // 可视区高度
+            return bound.top <= clientHeight + 100; // 这里有个+100是为了提前加载。
+        }
+        function lazyLoad() {
+            $.each($('img'), (index,item)=>{
+                if(isInSight(item)) {
+                    $(item).attr('src', $(item).attr('data-src'));
+                }
+            });
+        }
+    });
+</script>
+</html>
